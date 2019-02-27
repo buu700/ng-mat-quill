@@ -1,5 +1,12 @@
 import {Component, Input, Self, Optional, ElementRef, SimpleChanges, OnChanges, DoCheck, OnDestroy} from '@angular/core';
-import {NgControl, NgForm, FormGroupDirective, FormControl} from '@angular/forms';
+import {
+	ControlValueAccessor,
+	NG_VALUE_ACCESSOR,
+	NgControl,
+	NgForm,
+	FormControl,
+	FormGroupDirective
+} from '@angular/forms';
 import {ErrorStateMatcher, CanUpdateErrorState} from '@angular/material/core';
 import {MatFormFieldControl} from '@angular/material/form-field';
 import {QuillComponent} from '@webacad/ng-quill';
@@ -17,6 +24,11 @@ let nextUniqueId: number = 0;
 			provide: MatFormFieldControl,
 			useExisting: MatQuillComponent,
 		},
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: MatQuillComponent,
+			multi: true,
+		}
 	],
 })
 export class MatQuillComponent extends QuillComponent implements
@@ -24,7 +36,8 @@ export class MatQuillComponent extends QuillComponent implements
 	DoCheck,
 	OnDestroy,
 	MatFormFieldControl<string>,
-	CanUpdateErrorState
+	CanUpdateErrorState,
+	ControlValueAccessor
 {
 
 
