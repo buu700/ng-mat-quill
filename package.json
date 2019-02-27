@@ -13,7 +13,7 @@
 		"type": "git",
 		"url": "git@github.com:Web-ACAD/ng-mat-quill.git"
 	},
-	"main": "./lib/index.js",
+	"main": "./lib/esm5/index.js",
 	"author": {
 		"name": "David Kudera",
 		"email": "kudera.d@gmail.com",
